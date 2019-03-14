@@ -22,7 +22,6 @@ uppergreen = np.array([90, 255, 255])
 
 # the black board for the models
 board = np.zeros((230, 230), dtype='uint8')
-board2 = np.zeros((230, 230), dtype='uint8')
 
 while(cap.isOpened()):
     ret, frame = cap.read()
@@ -80,13 +79,44 @@ while(cap.isOpened()):
 
     
     hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-    hsv_roi2 = cv2.cvtColor(roi2, cv2.COLOR_BGR2HSV)
     # detecting colours in the range
     roi_range = cv2.inRange(hsv_roi, lowergreen, uppergreen)
-    roi_range2 = cv2.inRange(hsv_roi2, lowergreen, uppergreen)
     # applying contours on the detected colours
     contours, hierarchy = cv2.findContours(roi_range.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    hsv_roi2 = cv2.cvtColor(roi2, cv2.COLOR_BGR2HSV)
+    roi_range2 = cv2.inRange(hsv_roi2, lowergreen, uppergreen)
     contours2, hierarchy2 = cv2.findContours(roi_range2.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi3 = cv2.cvtColor(roi3, cv2.COLOR_BGR2HSV)
+    roi_range3 = cv2.inRange(hsv_roi3, lowergreen, uppergreen)
+    contours3, hierarchy3 = cv2.findContours(roi_range3.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi4 = cv2.cvtColor(roi4, cv2.COLOR_BGR2HSV)
+    roi_range4 = cv2.inRange(hsv_roi4, lowergreen, uppergreen)
+    contours4, hierarchy4 = cv2.findContours(roi_range4.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi5 = cv2.cvtColor(roi5, cv2.COLOR_BGR2HSV)
+    roi_range5 = cv2.inRange(hsv_roi5, lowergreen, uppergreen)
+    contours5, hierarchy5 = cv2.findContours(roi_range5.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi6 = cv2.cvtColor(roi6, cv2.COLOR_BGR2HSV)
+    roi_range6 = cv2.inRange(hsv_roi6, lowergreen, uppergreen)
+    contours6, hierarchy6 = cv2.findContours(roi_range6.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi7 = cv2.cvtColor(roi7, cv2.COLOR_BGR2HSV)
+    roi_range7 = cv2.inRange(hsv_roi7, lowergreen, uppergreen)
+    contours7, hierarchy7 = cv2.findContours(roi_range7.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi8 = cv2.cvtColor(roi8, cv2.COLOR_BGR2HSV)
+    roi_range8 = cv2.inRange(hsv_roi8, lowergreen, uppergreen)
+    contours8, hierarchy8 = cv2.findContours(roi_range8.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    hsv_roi9 = cv2.cvtColor(roi9, cv2.COLOR_BGR2HSV)
+    roi_range9 = cv2.inRange(hsv_roi9, lowergreen, uppergreen)
+    contours9, hierarchy9 = cv2.findContours(roi_range9.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    
     # the text to be displayed on the screen
     predict1_text = "Logistic Regression : "
     predict2_text = "CNN Model : "
@@ -138,6 +168,26 @@ while(cap.isOpened()):
         #            cv2.line(roi2, center_points2[i-1], center_points2[i], (200, 200, 200), 5, cv2.LINE_AA)
         #            cv2.line(board2, (center_points2[i-1][0]+15, center_points2[i-1][1]+15),
         #                     (center_points2[i][0]+15, center_points2[i][1]+15), 255, 7, cv2.LINE_AA)
+
+    #detecting dot in - rectangle
+    if(len(contours3) > 0):
+        drawing_started = True
+        print("-")
+
+    #detecting dot in * rectangle
+    if(len(contours4) > 0):
+        drawing_started = True
+        print("*")
+
+    #detecting dot in / rectangle
+    if(len(contours5) > 0):
+        drawing_started = True
+        print("/")
+
+    #detecting dot in + rectangle
+    if(len(contours2) > 0):
+        drawing_started = True
+        print("+")
 
 
     # the board is resized for the prediction
