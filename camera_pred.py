@@ -1,15 +1,15 @@
 import cv2
 import math
 import numpy as np
-import time
+#import time
 from collections import deque
 import digit_recognizer as dr
 import LRmodel
 
 cap = cv2.VideoCapture(0)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-#cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
-#cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+# cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+# cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
 # collection of points to draw
 center_points = deque()
 center_points2 = deque()
