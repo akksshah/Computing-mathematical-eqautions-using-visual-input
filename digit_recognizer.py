@@ -67,7 +67,7 @@ else:
 
     # training and testing LR model
     LR_params = LRmodel.model(train_x, train_y, test_x, test_y,
-                              iters=20000, alpha=0.1, print_cost=True)
+                              iters=1000, alpha=0.1, print_cost=True)
     # training and testing CNN model
     model_conv, CNN_accuracy = conv_network.model(train_x, train_y,
                                                   test_x, test_y, epoch=12)
