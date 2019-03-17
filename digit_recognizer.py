@@ -1,9 +1,10 @@
-import input_data
-import conv_network
-import LRmodel
+import os
+
 import numpy as np
 from tensorflow.python import keras
-import os
+
+import conv_network
+import input_data
 
 num_classes = 10
 img_rows, img_cols = 28, 28
@@ -37,12 +38,12 @@ if weights_files == correct_files:
     LR_params = np.load('weights/LR_params.npy')
     # loading the cnn model using json
     CNN_acc = np.load('weights/cnn_accuracy.npy')
-    json_file = open('weights/cnn_model.json', 'r')
+    json_file = open('weights/cnn_model_akks.json', 'r')
     model = json_file.read()
     json_file.close()
     model_conv = keras.models.model_from_json(model)
     # loading the cnn weights into the models
-    model_conv.load_weights('weights/cnn_weights.h5')
+    model_conv.load_weights('weights/cnn_weights_akks.h5')
     # printing LR saved models parameters
     print('Trained Logistic Regression')
     print("Logistic Regression Train accuracy : ", LR_params.item().get('train_accuracy'))
@@ -57,7 +58,7 @@ if weights_files == correct_files:
 else:
     # loading the MNIST dataset
     mnist = input_data.read_data_sets("data/", one_hot=False)
-    train_size, test_size = 20000, 2000
+    train_size, test_size = 40000, 4500
     train_data = mnist.train.next_batch(train_size)
     test_data = mnist.test.next_batch(test_size)
 
@@ -66,12 +67,12 @@ else:
     test_x, test_y = prep_data(test_data, test_size)
 
     # training and testing LR model
-    LR_params = LRmodel.model(train_x, train_y, test_x, test_y,
-                              iters=1000, alpha=0.1, print_cost=True)
+    #LR_params = LRmodel.model(train_x, train_y, test_x, test_y,
+                              #iters=1000, alpha=0.1, print_cost=True)
     # training and testing CNN model
     model_conv, CNN_accuracy = conv_network.model(train_x, train_y,
                                                   test_x, test_y, epoch=12)
-    np.save('weights/LR_params.npy', LR_params)
+    #np.save('weights/LR_params.npy', LR_params)
     np.save('weights/cnn_accuracy.npy', CNN_accuracy)
     # converting model to json
     json_model = model_conv.to_json()

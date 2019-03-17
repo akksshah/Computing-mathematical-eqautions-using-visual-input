@@ -1,10 +1,11 @@
-import cv2
 import math
-import numpy as np
-#import time
+# import time
 from collections import deque
+
+import cv2
+import numpy as np
+
 import digit_recognizer as dr
-import LRmodel
 
 cap = cv2.VideoCapture(0)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -24,79 +25,74 @@ uppergreen = np.array([90, 255, 255])
 board = np.zeros((230, 230), dtype='uint8')
 equ = ""
 
-while(cap.isOpened()):
+while cap.isOpened():
     ret, frame = cap.read()
     # flipping the frame
     frame = cv2.flip(frame, 1)
     # applying gaussian blur
     frame = cv2.GaussianBlur(frame, (5, 5), 0)
     # drawing the rectangle for the board
-    
-    
-    
-    #box area to detect digits
+
+    # box area to detect digits
     cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
     roi = frame[50:250, 550:750, :]
-    
-    #rectangle frame for + operator
+
+    # rectangle frame for + operator
     cv2.rectangle(frame, (1050, 50), (1175, 175), (100, 100, 255), 2)
     roi2 = frame[50:175, 1050:1175, :]
     cv2.line(frame, (1112, 60), (1112, 165), (200, 200, 200), 10)
     cv2.line(frame, (1060, 112), (1165, 112), (200, 200, 200), 10)
-    
-    #rectangle frame for - operator
+
+    # rectangle frame for - operator
     cv2.rectangle(frame, (1050, 205), (1175, 330), (100, 100, 255), 2)
     roi3 = frame[205:330, 1050:1175, :]
     cv2.line(frame, (1060, 267), (1165, 267), (200, 200, 200), 10)
-    
-    #rectangle frame for * operator
+
+    # rectangle frame for * operator
     cv2.rectangle(frame, (1050, 360), (1175, 485), (100, 100, 255), 2)
     roi4 = frame[360:485, 1050:1175, :]
     cv2.line(frame, (1112, 370), (1112, 475), (200, 200, 200), 10)
     cv2.line(frame, (1060, 422), (1165, 422), (200, 200, 200), 10)
     cv2.line(frame, (1070, 380), (1155, 465), (200, 200, 200), 10)
     cv2.line(frame, (1155, 380), (1070, 465), (200, 200, 200), 10)
-    
-    #rectangle frame for / operator
+
+    # rectangle frame for / operator
     cv2.rectangle(frame, (1050, 515), (1175, 640), (100, 100, 255), 2)
     roi5 = frame[515:640, 1050:1175, :]
     cv2.line(frame, (1155, 535), (1070, 620), (200, 200, 200), 10)
-    
-    #rectangle frame for ^ operator
+
+    # rectangle frame for ^ operator
     cv2.rectangle(frame, (150, 50), (275, 175), (100, 100, 255), 2)
     roi6 = frame[50:175, 150:275]
     cv2.line(frame, (170, 112), (212, 60), (200, 200, 200), 10)
     cv2.line(frame, (212, 60), (255, 112), (200, 200, 200), 10)
-    
-    #rectangle frame for square root operator
+
+    # rectangle frame for square root operator
     cv2.rectangle(frame, (150, 205), (275, 330), (100, 100, 255), 2)
     roi7 = frame[205:330, 150:275, :]
     cv2.line(frame, (160, 267), (182, 310), (200, 200, 200), 10)
     cv2.line(frame, (1155, 380), (1070, 465), (200, 200, 200), 10)
     cv2.line(frame, (1155, 380), (1070, 465), (200, 200, 200), 10)
-    
-    #267:310 160:182
-    
-    
-    #rectangle frame for linear eqaution
+
+    # 267:310 160:182
+
+    # rectangle frame for linear eqaution
     cv2.rectangle(frame, (150, 360), (275, 485), (100, 100, 255), 2)
     roi8 = frame[360:485, 150:275, :]
 
-    #rectangle frame for quadratic equation
+    # rectangle frame for quadratic equation
     cv2.rectangle(frame, (150, 515), (275, 640), (100, 100, 255), 2)
     roi9 = frame[515:640, 150:275, :]
 
-    
-    #cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
-    
-    #rectangle frame for ^ operator
-#    cv2.rectangle(frame, (400, 500), (600, 750), (100, 100, 255), 2)
-#    roi5 = frame[500:750, 500:600, :]
+    # cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
 
-    
-    #plus sign
-#
-    
+    # rectangle frame for ^ operator
+    #    cv2.rectangle(frame, (400, 500), (600, 750), (100, 100, 255), 2)
+    #    roi5 = frame[500:750, 500:600, :]
+
+    # plus sign
+    #
+
     hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
     # detecting colours in the range
     roi_range = cv2.inRange(hsv_roi, lowergreen, uppergreen)
@@ -106,44 +102,43 @@ while(cap.isOpened()):
     hsv_roi2 = cv2.cvtColor(roi2, cv2.COLOR_BGR2HSV)
     roi_range2 = cv2.inRange(hsv_roi2, lowergreen, uppergreen)
     contours2, hierarchy2 = cv2.findContours(roi_range2.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi3 = cv2.cvtColor(roi3, cv2.COLOR_BGR2HSV)
     roi_range3 = cv2.inRange(hsv_roi3, lowergreen, uppergreen)
     contours3, hierarchy3 = cv2.findContours(roi_range3.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi4 = cv2.cvtColor(roi4, cv2.COLOR_BGR2HSV)
     roi_range4 = cv2.inRange(hsv_roi4, lowergreen, uppergreen)
     contours4, hierarchy4 = cv2.findContours(roi_range4.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi5 = cv2.cvtColor(roi5, cv2.COLOR_BGR2HSV)
     roi_range5 = cv2.inRange(hsv_roi5, lowergreen, uppergreen)
     contours5, hierarchy5 = cv2.findContours(roi_range5.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi6 = cv2.cvtColor(roi6, cv2.COLOR_BGR2HSV)
     roi_range6 = cv2.inRange(hsv_roi6, lowergreen, uppergreen)
     contours6, hierarchy6 = cv2.findContours(roi_range6.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi7 = cv2.cvtColor(roi7, cv2.COLOR_BGR2HSV)
     roi_range7 = cv2.inRange(hsv_roi7, lowergreen, uppergreen)
     contours7, hierarchy7 = cv2.findContours(roi_range7.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi8 = cv2.cvtColor(roi8, cv2.COLOR_BGR2HSV)
     roi_range8 = cv2.inRange(hsv_roi8, lowergreen, uppergreen)
     contours8, hierarchy8 = cv2.findContours(roi_range8.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi9 = cv2.cvtColor(roi9, cv2.COLOR_BGR2HSV)
     roi_range9 = cv2.inRange(hsv_roi9, lowergreen, uppergreen)
     contours9, hierarchy9 = cv2.findContours(roi_range9.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
-    
+
     # the text to be displayed on the screen
     predict1_text = "Logistic Regression : "
     predict2_text = "CNN Model : "
-    numbers=[]
+    numbers = []
     # flags to check when drawing started and when stopped
     drawing_started = False
     drawing_stopped = False
-    if(len(contours) > 0):
+    if len(contours) > 0:
         drawing_started = True
         # getting max contours from the contours
         max_contours = max(contours, key=cv2.contourArea)
@@ -158,27 +153,27 @@ while(cap.isOpened()):
     else:
         drawing_stopped = False
     for i in range(1, len(center_points)):
-        if math.sqrt((center_points[i-1][0] - center_points[i][0])**2 +
-                     (center_points[i-1][1] - center_points[i][1])**2) < 50:
-            cv2.line(roi, center_points[i-1], center_points[i], (200, 200, 200), 5, cv2.LINE_AA)
-            cv2.line(board, (center_points[i-1][0]+15, center_points[i-1][1]+15),
-                     (center_points[i][0]+15, center_points[i][1]+15), 255, 7, cv2.LINE_AA)
+        if math.sqrt((center_points[i - 1][0] - center_points[i][0]) ** 2 +
+                     (center_points[i - 1][1] - center_points[i][1]) ** 2) < 50:
+            cv2.line(roi, center_points[i - 1], center_points[i], (200, 200, 200), 5, cv2.LINE_AA)
+            cv2.line(board, (center_points[i - 1][0] + 15, center_points[i - 1][1] + 15),
+                     (center_points[i][0] + 15, center_points[i][1] + 15), 255, 7, cv2.LINE_AA)
 
-    #detecting dot in + rectangle
-    if(len(contours2) > 0):
+    # detecting dot in + rectangle
+    if len(contours2) > 0:
         drawing_started = True
         print("+")
-        #print(type(contours2))
+        # print(type(contours2))
         # getting max contours from the contours
-        #max_contours2 = max(contours2, key2=cv2.contourArea)
-        #M = cv2.moments(max_contours2)
+        # max_contours2 = max(contours2, key2=cv2.contourArea)
+        # M = cv2.moments(max_contours2)
         # to avoid divided by zero error
-        #try:
-        #center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
-        #except:
-        #continue
+        # try:
+        # center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
+        # except:
+        # continue
         # center obtained is appended to the deque
-        #center_points2.appendleft(center)
+        # center_points2.appendleft(center)
         #    else:
         #        drawing_stopped2 = False
         #    for i in range(1, len(center_points2)):
@@ -188,42 +183,40 @@ while(cap.isOpened()):
         #            cv2.line(board2, (center_points2[i-1][0]+15, center_points2[i-1][1]+15),
         #                     (center_points2[i][0]+15, center_points2[i][1]+15), 255, 7, cv2.LINE_AA)
 
-    #detecting dot in - rectangle
-    if(len(contours3) > 0):
+    # detecting dot in - rectangle
+    if len(contours3) > 0:
         drawing_started = True
         print("-")
 
-    #detecting dot in * rectangle
-    if(len(contours4) > 0):
+    # detecting dot in * rectangle
+    if len(contours4) > 0:
         drawing_started = True
         print("*")
 
-    #detecting dot in / rectangle
-    if(len(contours5) > 0):
+    # detecting dot in / rectangle
+    if len(contours5) > 0:
         drawing_started = True
         print("/")
 
-    #detecting dot in ^  rectangle
-    if(len(contours6) > 0):
+    # detecting dot in ^  rectangle
+    if len(contours6) > 0:
         drawing_started = True
         print("^")
 
-    #detecting dot in root  rectangle
-    if(len(contours7) > 0):
+    # detecting dot in root  rectangle
+    if len(contours7) > 0:
         drawing_started = True
         print("root")
 
-    #detecting dot in linear  rectangle
-    if(len(contours8) > 0):
+    # detecting dot in linear  rectangle
+    if len(contours8) > 0:
         drawing_started = True
         print("linear")
 
-    #detecting dot in quadratic rectangle
-    if(len(contours9) > 0):
+    # detecting dot in quadratic rectangle
+    if len(contours9) > 0:
         drawing_started = True
         print("quadratic")
-
-
 
     # the board is resized for the prediction
     input = cv2.resize(board, (28, 28))
@@ -238,18 +231,19 @@ while(cap.isOpened()):
     if np.max(board) != 0:
         LR_input = input.reshape(1, 784)
         test_x = input.reshape((1, 28, 28, 1))
-        prediction1 = np.argmax(LRmodel.predict(LR_input, dr.LR_params.item().get('weights'), dr.LR_params.item().get('base')))
+        # prediction1 = np.argmax(
+        #     LRmodel.predict(LR_input, dr.LR_params.item().get('weights'), dr.LR_params.item().get('base')))
         prediction2 = np.argmax(dr.model_conv.predict(test_x))
-        
+
         numbers.append(prediction2)
-        predict1_text += str(prediction1)
+        # predict1_text += str(prediction1)
         predict2_text += str(prediction2)
     # displaying the text on the screen
     cv2.putText(frame, predict1_text,
                 (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, predict2_text,
-                            (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-#cv2.putText(frame, width, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    # cv2.putText(frame, width, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cv2.imshow('input', input)
     cv2.imshow('frame', frame)
@@ -263,4 +257,3 @@ while(cap.isOpened()):
         center_points.clear()
 cap.release()
 cv2.destroyAllWindows()
-
