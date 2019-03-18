@@ -64,14 +64,16 @@ else:
 
     # preparing training and test data
     train_x, train_y = prep_data(train_data, train_size)
+    train_x, train_y = prep_data(train_data, train_size)
     test_x, test_y = prep_data(test_data, test_size)
 
     # training and testing LR model
     #LR_params = LRmodel.model(train_x, train_y, test_x, test_y,
                               #iters=1000, alpha=0.1, print_cost=True)
     # training and testing CNN model
-    model_conv, CNN_accuracy = conv_network.model(train_x, train_y,
+    model_conv, CNN_accuracy = conv_network.model_akks(train_x, train_y,
                                                   test_x, test_y, epoch=12)
+    # model_conv, CNN_accuracy = conv_network.model_akks()
     #np.save('weights/LR_params.npy', LR_params)
     np.save('weights/cnn_accuracy.npy', CNN_accuracy)
     # converting model to json
