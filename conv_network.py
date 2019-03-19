@@ -9,6 +9,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
+from keras.utils import plot_model
 
 num_classes = 10
 img_rows, img_cols = 28, 28
@@ -147,4 +148,5 @@ def model_akks(train_x, train_y, test_x, test_y, epoch):
     print('Test accuracy : ', test_accuracy)
     CNN_accuracy = {'train_accuracy': train_accuracy,
                     'test_accuracy': test_accuracy, 'epoch': epoch}
+    #plot_model(model, to_file='model.png')
     return model, CNN_accuracy
