@@ -58,7 +58,7 @@ if weights_files == correct_files:
 else:
     # loading the MNIST dataset
     mnist = input_data.read_data_sets("data/", one_hot=False)
-    train_size, test_size = 40000, 4500
+    train_size, test_size = 500, 500
     train_data = mnist.train.next_batch(train_size)
     test_data = mnist.test.next_batch(test_size)
 
@@ -72,7 +72,7 @@ else:
                               #iters=1000, alpha=0.1, print_cost=True)
     # training and testing CNN model
     model_conv, CNN_accuracy = conv_network.model_akks(train_x, train_y,
-                                                  test_x, test_y, epoch=12)
+                                                  test_x, test_y, epoch=1)
     # model_conv, CNN_accuracy = conv_network.model_akks()
     #np.save('weights/LR_params.npy', LR_params)
     np.save('weights/cnn_accuracy.npy', CNN_accuracy)

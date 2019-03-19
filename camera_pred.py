@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 
 import digit_recognizer as dr
+import linear_eq as lq
 
 cap = cv2.VideoCapture(0)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -71,18 +72,22 @@ while cap.isOpened():
     cv2.rectangle(frame, (150, 205), (275, 330), (100, 100, 255), 2)
     roi7 = frame[205:330, 150:275, :]
     cv2.line(frame, (160, 267), (182, 310), (200, 200, 200), 10)
-    cv2.line(frame, (1155, 380), (1070, 465), (200, 200, 200), 10)
-    cv2.line(frame, (1155, 380), (1070, 465), (200, 200, 200), 10)
-
-    # 267:310 160:182
+    cv2.line(frame, (182, 310), (212, 225), (200, 200, 200), 10)
+    cv2.line(frame, (212, 225), (255, 225), (200, 200, 200), 10)
 
     # rectangle frame for linear eqaution
     cv2.rectangle(frame, (150, 360), (275, 485), (100, 100, 255), 2)
     roi8 = frame[360:485, 150:275, :]
+    cv2.putText(frame, "Linear", (170, 400), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "Equation", (160, 450), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
 
     # rectangle frame for quadratic equation
     cv2.rectangle(frame, (150, 515), (275, 640), (100, 100, 255), 2)
     roi9 = frame[515:640, 150:275, :]
+    cv2.putText(frame, "Quadratic", (150, 555), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "Equation", (160, 600), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+
+    cv2.putText(frame, "Formed Equation: ", (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     # cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
 
@@ -211,7 +216,9 @@ while cap.isOpened():
     # detecting dot in linear  rectangle
     if len(contours8) > 0:
         drawing_started = True
-        print("linear")
+        #print("linear")
+
+        lq.lineq()
 
     # detecting dot in quadratic rectangle
     if len(contours9) > 0:
@@ -239,10 +246,8 @@ while cap.isOpened():
         # predict1_text += str(prediction1)
         predict2_text += str(prediction2)
     # displaying the text on the screen
-    cv2.putText(frame, predict1_text,
-                (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-    cv2.putText(frame, predict2_text,
-                (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    #cv2.putText(frame, predict1_text, (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    #cv2.putText(frame, predict2_text, (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     # cv2.putText(frame, width, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cv2.imshow('input', input)

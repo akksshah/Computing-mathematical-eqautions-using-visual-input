@@ -2,6 +2,8 @@
   <dictionary name="aakash">
     <words>
       <w>akks</w>
+      <w>relu</w>
+      <w>softmax</w>
     </words>
   </dictionary>
 </component>
