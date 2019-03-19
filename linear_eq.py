@@ -153,14 +153,9 @@ def lineq():
 
             print(x1)
             print(y1)
-
             print(c1)
-
             print(x2)
-
             print(y2)
-
-
             print(c2)
 
             # x1 = 3
@@ -170,7 +165,7 @@ def lineq():
             # y2 = 3
             # c2 = 7
 
-            #linearequ()
+            linearequ()
 
     cap.release()
     cv2.destroyAllWindows()
