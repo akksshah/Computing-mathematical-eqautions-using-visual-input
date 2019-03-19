@@ -9,7 +9,8 @@ import digit_recognizer as dr
 
 def quadr():
     dp = "%.2f"
-    number=[]
+    number = []
+    counter = 0
     def quadratic():
         discRoot = math.sqrt((b * b) - 4 * a * c)
         root1 = (-b + discRoot) / (2 * a)
@@ -19,7 +20,7 @@ def quadr():
 
         print(ans + " " + ans2)
 
-        cv2.putText(frame, "hello", (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(frame, "", (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         # cv2.putText(frame, y, (5, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cap = cv2.VideoCapture(0)
@@ -44,11 +45,20 @@ def quadr():
         cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
         roi = frame[50:250, 550:750, :]
 
+        # rectangle frame for - operator
+        cv2.rectangle(frame, (250, 50), (450, 250), (100, 100, 255), 2)
+        roi2 = frame[50:250, 250:450, :]
+        cv2.line(frame, (270, 150), (430, 150), (200, 200, 200), 10)
+
         hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
         # detecting colours in the range
         roi_range = cv2.inRange(hsv_roi, lowergreen, uppergreen)
         # applying contours on the detected colours
         contours, hierarchy = cv2.findContours(roi_range.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        hsv_roi2 = cv2.cvtColor(roi2, cv2.COLOR_BGR2HSV)
+        roi_range2 = cv2.inRange(hsv_roi2, lowergreen, uppergreen)
+        contours2, hierarchy2 = cv2.findContours(roi_range2.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         # the text to be displayed on the screen
         predict1_text = "Solving Quadratic Equation: "
@@ -57,6 +67,13 @@ def quadr():
         # flags to check when drawing started and when stopped
         drawing_started = False
         drawing_stopped = False
+        
+        # detecting dot in - rectangle
+        if len(contours2) > 0 and counter == 0:
+            drawing_started = True
+            #print("-")
+            counter += 1
+        
         if len(contours) > 0:
             drawing_started = True
             # getting max contours from the contours
@@ -114,8 +131,14 @@ def quadr():
         elif k == ord('p'):
             p = not p
         elif k == ord('s'):
-            number.append(prediction2)
-        elif k == ord('w'):
+            if counter is 1:
+                a=str(prediction2)
+                b=int("-"+ a)
+                number.append(b)
+                counter = 0
+            else:
+                number.append(prediction2)
+        elif k == ord('e'):
             a = number[0]
             b = number[1]
             c = number[2]
