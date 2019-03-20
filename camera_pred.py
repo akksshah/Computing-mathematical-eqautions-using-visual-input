@@ -10,8 +10,9 @@ import linear_eq as lq
 import quadra_eq as qd
 
 
-def aakash(frame, predict4_text):
-    cv2.putText(frame, predict4_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+def aakash(frame, hello):
+    #print("Hello :" + hello)
+    cv2.putText(frame, hello, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
 digits=[]
 counter=0
@@ -286,6 +287,8 @@ while cap.isOpened():
         board.fill(0)
         center_points.clear()
     elif k == ord('s'):
+        if counter_aakash is 1:
+            counter_aakash = 0
         digits.append(prediction2)
         str1 = ''.join(str(e) for e in digits)
         predict3_text += str1
@@ -308,11 +311,11 @@ while cap.isOpened():
             print(equation)
             print(eval(equation))
             ans = eval(equation)
-            predict4_text += str(ans)
+            predict4_text_ans = "" + predict4_text + str(ans)
             counter_aakash = 1
-        if counter_aakash is 1:
-            aakash(frame, predict4_text)
-            counter_aakash = 0
+    if counter_aakash is 1:
+        aakash(frame, predict4_text_ans)
+        counter_aakash = 1
 
     # if counter_aakash is 1:
     #     print(predict4_text)
