@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb9f498d-257e-4dfd-b23e-0e56a3d78bfb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/camera_pred.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_pred.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weights/cnn_accuracy.npy" beforeDir="false" afterPath="$PROJECT_DIR$/weights/cnn_accuracy.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weights/cnn_weights.h5" beforeDir="false" afterPath="$PROJECT_DIR$/weights/cnn_weights.h5" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/camera_pred.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+            <state relative-caret-position="211">
+              <caret line="298" selection-start-line="298" selection-end-line="298" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -208,7 +205,7 @@
       <option name="presentableId" value="Default" />
       <updated>1552713820055</updated>
       <workItem from="1552713823738" duration="29522000" />
-      <workItem from="1553071690974" duration="1300000" />
+      <workItem from="1553071690974" duration="1908000" />
     </task>
     <task id="LOCAL-00001" summary="Model Enhancements">
       <created>1552832334120</created>
@@ -224,11 +221,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553110862279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Printing ans done">
+      <created>1553112626573</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553112626573</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30822000" />
+    <option name="totallyTimeSpent" value="31430000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -249,12 +253,12 @@
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Duplicates" order="1" weight="0.32959327" />
       <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.4985694" weight="0.17951807" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="3" sideWeight="0.4985694" visible="true" weight="0.28313252" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50143063" side_tool="true" weight="0.17951807" />
+      <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.4985694" weight="0.28313252" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="4" sideWeight="0.50143063" side_tool="true" visible="true" weight="0.17951807" />
       <window_info anchor="bottom" id="Python Console" order="5" sideWeight="0.4985207" weight="0.3060241" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="Run" order="9" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
@@ -302,7 +306,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Model Enhancements" />
     <MESSAGE value="Merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
+    <MESSAGE value="Printing ans done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Printing ans done" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -371,8 +376,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/camera_pred.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="211">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
