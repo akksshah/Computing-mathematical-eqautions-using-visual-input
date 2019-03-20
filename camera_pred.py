@@ -98,8 +98,6 @@ while cap.isOpened():
     cv2.putText(frame, "Quadratic", (150, 555), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "Equation", (160, 600), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
 
-
-
     # cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
 
     # rectangle frame for ^ operator
@@ -179,11 +177,11 @@ while cap.isOpened():
                      (center_points[i][0] + 15, center_points[i][1] + 15), 255, 7, cv2.LINE_AA)
 
     # detecting dot in + rectangle
-    if len(contours2) > 0 and counter==0:
+    if len(contours2) > 0 and counter is 0:
         drawing_started = True
         digits.append('+')
         counter += 1
-        #print("+")
+        # print("+")
         # print(type(contours2))
         # getting max contours from the contours
         # max_contours2 = max(contours2, key2=cv2.contourArea)
@@ -205,30 +203,30 @@ while cap.isOpened():
         #                     (center_points2[i][0]+15, center_points2[i][1]+15), 255, 7, cv2.LINE_AA)
 
     # detecting dot in - rectangle
-    if len(contours3) > 0 and counter==0:
+    if len(contours3) > 0 and counter is 0:
         drawing_started = True
-        #print("-")
+        # print("-")
         digits.append('-')
-        counter+=1
+        counter += 1
 
     # detecting dot in * rectangle
-    if len(contours4) > 0 and counter==0:
+    if len(contours4) > 0 and counter is 0:
         drawing_started = True
-        #print("*")
+        # print("*")
         digits.append('*')
         counter += 1
 
     # detecting dot in / rectangle
-    if len(contours5) > 0 and counter==0:
+    if len(contours5) > 0 and counter is 0:
         drawing_started = True
-        #print("/")
+        # print("/")
         digits.append('/')
         counter += 1
 
     # detecting dot in ^  rectangle
-    if len(contours6) > 0 and counter==0:
+    if len(contours6) > 0 and counter is 0:
         drawing_started = True
-        #print("^")
+        # print("^")
         digits.append('**')
         counter += 1
 
@@ -240,21 +238,21 @@ while cap.isOpened():
     # detecting dot in linear  rectangle
     if len(contours8) > 0:
         drawing_started = True
-        #print("linear")
+        # print("linear")
 
         lq.lineq()
 
     # detecting dot in quadratic rectangle
     if len(contours9) > 0:
         drawing_started = True
-        #print("quadratic")
+        # print("quadratic")
 
         qd.quadr()
 
     # the board is resized for the prediction
     input = cv2.resize(board, (28, 28))
     # applying morphological transformation on the drawn digit
-    if np.max(board) != 0 and drawing_started == True and drawing_stopped == True:
+    if np.max(board) != 0 and drawing_started is True and drawing_stopped is True:
         kernel = (5, 5)
         input = cv2.morphologyEx(input, cv2.MORPH_OPEN, kernel)
         board = cv2.morphologyEx(board, cv2.MORPH_OPEN, kernel)
@@ -272,12 +270,12 @@ while cap.isOpened():
         # predict1_text += str(prediction1)
         predict2_text += str(prediction2)
     # displaying the text on the screen
-    #cv2.putText(frame, predict1_text, (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    # cv2.putText(frame, predict1_text, (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, predict2_text, (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-    #cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    # cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     # cv2.putText(frame, width, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-    #predict3_text += str(ans)
+    # predict3_text += str(ans)
 
     k = cv2.waitKey(1) & 0xFF
     if k == ord('q'):
@@ -294,20 +292,20 @@ while cap.isOpened():
         predict3_text += str1
         cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-        if counter==1:
+        if counter is 1:
             counter = 0
 
     elif k == ord('e'):
-        l= len(digits)
-        if (digits[0]=='+' or digits[0]=='-' or digits[0]=='*' or digits[0]=='/'):
+        l = len(digits)
+        if digits[0] is '+' or digits[0] is '-' or digits[0] is '*' or digits[0] is'/':
             cv2.putText(frame, "Error in equation", (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-            #print("Error in equation")
-            digits=[]
+            # print("Error in equation")
+            digits = []
         else:
-            equation=""
-            for i in range (0,l):
-                equation+=str(digits[i])
-            digits=[]
+            equation = ""
+            for i in range(0, l):
+                equation += str(digits[i])
+            digits = []
             print(equation)
             print(eval(equation))
             ans = eval(equation)
