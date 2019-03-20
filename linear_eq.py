@@ -170,7 +170,8 @@ def lineq():
             # y2 = 3
             # c2 = 7
 
-            #linearequ()
+            linearequ()
 
     cap.release()
     cv2.destroyAllWindows()
+# TODO DO quadratic

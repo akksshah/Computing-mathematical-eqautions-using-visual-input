@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb9f498d-257e-4dfd-b23e-0e56a3d78bfb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/quadra_eq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_pred.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_pred.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conv_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/conv_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linear_eq.py" beforeDir="false" afterPath="$PROJECT_DIR$/linear_eq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weights/cnn_accuracy.npy" beforeDir="false" afterPath="$PROJECT_DIR$/weights/cnn_accuracy.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weights/cnn_weights.h5" beforeDir="false" afterPath="$PROJECT_DIR$/weights/cnn_weights.h5" afterDir="false" />
@@ -30,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linear_eq.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+            <state relative-caret-position="392">
+              <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -54,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/digit_recognizer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
+            <state relative-caret-position="207">
               <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -69,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conv_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
+            <state relative-caret-position="400">
               <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -116,13 +112,13 @@
       <find>iters</find>
       <find>center_po</find>
       <find>predict2</find>
-      <find>conv</find>
       <find>epoch</find>
       <find>x1</find>
       <find>prediction2</find>
       <find>numbers</find>
-      <find>number</find>
       <find>digits</find>
+      <find>number</find>
+      <find>conv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,7 +217,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552713820055</updated>
-      <workItem from="1552713823738" duration="26391000" />
+      <workItem from="1552713823738" duration="26738000" />
     </task>
     <task id="LOCAL-00001" summary="Model Enhancements">
       <created>1552832334120</created>
@@ -234,7 +230,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26391000" />
+    <option name="totallyTimeSpent" value="26738000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -254,9 +250,9 @@
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Duplicates" order="1" weight="0.32959327" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.4985694" visible="true" weight="0.17951807" />
+      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.4985694" weight="0.17951807" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.4985694" weight="0.28313252" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50143063" side_tool="true" visible="true" weight="0.17951807" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50143063" side_tool="true" weight="0.17951807" />
       <window_info anchor="bottom" id="Python Console" order="5" sideWeight="0.4985207" weight="0.30715287" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="7" />
@@ -265,7 +261,7 @@
       <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="13" weight="0.32959327" />
+      <window_info active="true" anchor="bottom" id="TODO" order="13" visible="true" weight="0.32891566" />
       <window_info anchor="right" id="R Graphics" order="0" />
       <window_info anchor="right" id="R Packages" order="1" />
       <window_info anchor="right" x="0" y="0" width="300" height="558" id="Documentation" order="2" side_tool="true" weight="0.45118344" />
@@ -283,6 +279,22 @@
     <MESSAGE value="Model Enhancements" />
     <option name="LAST_COMMIT_MESSAGE" value="Model Enhancements" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/digit_recognizer.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/digit_recognizer.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/input_data.py">
@@ -314,26 +326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conv_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/digit_recognizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/camera_pred.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3909">
@@ -346,10 +338,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/linear_eq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+        <state relative-caret-position="392">
+          <caret line="176" column="2" selection-start-line="176" selection-start-column="2" selection-end-line="176" selection-end-column="2" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conv_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/digit_recognizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
