@@ -7,9 +7,10 @@ import numpy as np
 
 import digit_recognizer as dr
 
+
 def lineq():
     number = []
-    counter=0
+    counter = 0
     def linearequ():
 
         x = "Value of x = "
@@ -143,7 +144,7 @@ def lineq():
                 counter = 0
             else:
                 number.append(prediction2)
-        elif k == ord('l'):
+        elif k == ord('e'):
             x1 = number[0]
             y1 = number[1]
             c1 = number[2]
@@ -153,14 +154,9 @@ def lineq():
 
             print(x1)
             print(y1)
-
             print(c1)
-
             print(x2)
-
             print(y2)
-
-
             print(c2)
 
             # x1 = 3

@@ -58,7 +58,7 @@ if weights_files == correct_files:
 else:
     # loading the MNIST dataset
     mnist = input_data.read_data_sets("data/", one_hot=False)
-    train_size, test_size = 500, 500
+    train_size, test_size = 400, 100
     train_data = mnist.train.next_batch(train_size)
     test_data = mnist.test.next_batch(test_size)
 

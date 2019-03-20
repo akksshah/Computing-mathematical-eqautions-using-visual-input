@@ -9,9 +9,14 @@ import digit_recognizer as dr
 import linear_eq as lq
 import quadra_eq as qd
 
+
+def aakash(frame, predict4_text):
+    cv2.putText(frame, predict4_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
 digits=[]
 counter=0
 ans=0
+counter_aakash = 0
 
 cap = cv2.VideoCapture(0)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -144,7 +149,8 @@ while cap.isOpened():
     # the text to be displayed on the screen
     predict1_text = "Logistic Regression : "
     predict2_text = "CNN Model : "
-    predict3_text = "Answer : "
+    predict3_text = "Equation : "
+    predict4_text = "Answer : "
 
     numbers = []
     # flags to check when drawing started and when stopped
@@ -272,9 +278,6 @@ while cap.isOpened():
     # cv2.putText(frame, width, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     #predict3_text += str(ans)
 
-    cv2.imshow('input', input)
-    cv2.imshow('frame', frame)
-    cv2.imshow('board', board)
     k = cv2.waitKey(1) & 0xFF
     if k == ord('q'):
         break
@@ -284,23 +287,42 @@ while cap.isOpened():
         center_points.clear()
     elif k == ord('s'):
         digits.append(prediction2)
+        str1 = ''.join(str(e) for e in digits)
+        predict3_text += str1
+        cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
         if counter==1:
             counter = 0
-    elif k == ord('r'):
+
+    elif k == ord('e'):
         l= len(digits)
         if (digits[0]=='+' or digits[0]=='-' or digits[0]=='*' or digits[0]=='/'):
-            print("Error in equation")
+            cv2.putText(frame, "Error in equation", (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            #print("Error in equation")
             digits=[]
         else:
             equation=""
             for i in range (0,l):
                 equation+=str(digits[i])
+            digits=[]
             print(equation)
             print(eval(equation))
             ans = eval(equation)
+            predict4_text += str(ans)
+            counter_aakash = 1
+        if counter_aakash is 1:
+            aakash(frame, predict4_text)
+            counter_aakash = 0
 
-    predict3_text += str(ans)
-    cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    # if counter_aakash is 1:
+    #     print(predict4_text)
+    #     cv2.putText(frame, predict4_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    #     counter_aakash = 0
+
+    cv2.imshow('input', input)
+    cv2.imshow('frame', frame)
+    cv2.imshow('board', board)
+
 
 cap.release()
 cv2.destroyAllWindows()
