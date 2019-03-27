@@ -10,17 +10,19 @@ import linear_eq as lq
 import quadra_eq as qd
 
 
-def aakash(frame, hello):
-    #print("Hello :" + hello)
-    cv2.putText(frame, hello, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+def aakash(frame1, hello):
+    # print("Hello :" + hello)
+    cv2.putText(frame1, hello, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-digits=[]
-counter=0
-ans=0
+
+digits = []
+counter = 0
+ans = 0
 counter_aakash = 0
 
 cap = cv2.VideoCapture(0)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
 # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
 # collection of points to draw
@@ -43,8 +45,10 @@ while cap.isOpened():
     frame = cv2.flip(frame, 1)
     # applying gaussian blur
     frame = cv2.GaussianBlur(frame, (5, 5), 0)
+    print(width)
+    print(height)
     # drawing the rectangle for the board
-
+    frame = cv2.resize(frame, (int(width), int(height)))
     # box area to detect digits
     cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
     roi = frame[50:250, 550:750, :]
@@ -291,6 +295,7 @@ while cap.isOpened():
         str1 = ''.join(str(e) for e in digits)
         predict3_text += str1
         cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        counter_aakash = 0
 
         if counter is 1:
             counter = 0
