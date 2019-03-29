@@ -192,7 +192,8 @@ def lineq():
             counter1 = 1
         # cv2.imshow('input', input)
         cv2.imshow('frame', frame)
-        #  cv2.imshow('board', board)
+        cv2.moveWindow("frame", 100, 20)
+        # cv2.imshow('board', board)
 
     cap.release()
     cv2.destroyAllWindows()

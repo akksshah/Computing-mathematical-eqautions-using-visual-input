@@ -1,30 +1,32 @@
 import math
-# import time
+import time
 from collections import deque
 
 import cv2
 import numpy as np
 
 import digit_recognizer as dr
-import linear_eq as lq
-import quadra_eq as qd
-import trigno_eq_akks as tr
+# import linear_eq as lq
+# import quadra_eq as qd
+# import trigno_eq_akks as tr
 
 
 def printeq(frame, text):
     cv2.putText(frame, text, (350, 340), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-
+    #time.sleep(2)
 
 def printans(frame, text):
     # print("Hello :" + hello)
     cv2.putText(frame, text, (350, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
+
 def calci_main():
     digits = []
     counter = 0
     ans = 0
-    counter2 = 0
+    counter_eq = 0
     counter3 = 0
+    counter_akks = 0
 
     cap = cv2.VideoCapture(0)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -88,30 +90,30 @@ def calci_main():
         cv2.line(frame, (170, 112), (212, 60), (200, 200, 200), 10)
         cv2.line(frame, (212, 60), (255, 112), (200, 200, 200), 10)
 
-        # rectangle frame for square root operator
-        cv2.rectangle(frame, (150, 205), (275, 330), (100, 100, 255), 2)
-        roi7 = frame[205:330, 150:275, :]
-        cv2.line(frame, (160, 267), (182, 310), (200, 200, 200), 10)
-        cv2.line(frame, (182, 310), (212, 225), (200, 200, 200), 10)
-        cv2.line(frame, (212, 225), (255, 225), (200, 200, 200), 10)
-
-        # rectangle frame for linear eqaution
-        cv2.rectangle(frame, (150, 360), (275, 485), (100, 100, 255), 2)
-        roi8 = frame[360:485, 150:275, :]
-        cv2.putText(frame, "Linear", (170, 400), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, "Equation", (160, 450), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-
-        # rectangle frame for quadratic equation
-        cv2.rectangle(frame, (150, 515), (275, 640), (100, 100, 255), 2)
-        roi9 = frame[515:640, 150:275, :]
-        cv2.putText(frame, "Quadratic", (150, 555), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, "Equation", (160, 600), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-
-        # rectangle frame for trignometric equation
-        cv2.rectangle(frame, (325, 515), (450, 640), (100, 100, 255), 2)
-        roi10 = frame[515:640, 325:450, :]
-        cv2.putText(frame, "Trignometric", (325, 555), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, "Equation", (350, 600), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
+        # # rectangle frame for square root operator
+        # cv2.rectangle(frame, (150, 205), (275, 330), (100, 100, 255), 2)
+        # roi7 = frame[205:330, 150:275, :]
+        # cv2.line(frame, (160, 267), (182, 310), (200, 200, 200), 10)
+        # cv2.line(frame, (182, 310), (212, 225), (200, 200, 200), 10)
+        # cv2.line(frame, (212, 225), (255, 225), (200, 200, 200), 10)
+        #
+        # # rectangle frame for linear eqaution
+        # cv2.rectangle(frame, (150, 360), (275, 485), (100, 100, 255), 2)
+        # roi8 = frame[360:485, 150:275, :]
+        # cv2.putText(frame, "Linear", (170, 400), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+        # cv2.putText(frame, "Equation", (160, 450), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+        #
+        # # rectangle frame for quadratic equation
+        # cv2.rectangle(frame, (150, 515), (275, 640), (100, 100, 255), 2)
+        # roi9 = frame[515:640, 150:275, :]
+        # cv2.putText(frame, "Quadratic", (150, 555), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+        # cv2.putText(frame, "Equation", (160, 600), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
+        #
+        # # rectangle frame for trignometric equation
+        # cv2.rectangle(frame, (325, 515), (450, 640), (100, 100, 255), 2)
+        # roi10 = frame[515:640, 325:450, :]
+        # cv2.putText(frame, "Trignometric", (325, 555), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
+        # cv2.putText(frame, "Equation", (350, 600), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
 
         # cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
 
@@ -148,21 +150,21 @@ def calci_main():
         roi_range6 = cv2.inRange(hsv_roi6, lowergreen, uppergreen)
         contours6, hierarchy6 = cv2.findContours(roi_range6.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-        hsv_roi7 = cv2.cvtColor(roi7, cv2.COLOR_BGR2HSV)
-        roi_range7 = cv2.inRange(hsv_roi7, lowergreen, uppergreen)
-        contours7, hierarchy7 = cv2.findContours(roi_range7.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-        hsv_roi8 = cv2.cvtColor(roi8, cv2.COLOR_BGR2HSV)
-        roi_range8 = cv2.inRange(hsv_roi8, lowergreen, uppergreen)
-        contours8, hierarchy8 = cv2.findContours(roi_range8.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-        hsv_roi9 = cv2.cvtColor(roi9, cv2.COLOR_BGR2HSV)
-        roi_range9 = cv2.inRange(hsv_roi9, lowergreen, uppergreen)
-        contours9, hierarchy9 = cv2.findContours(roi_range9.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-        hsv_roi10 = cv2.cvtColor(roi10, cv2.COLOR_BGR2HSV)
-        roi_range10 = cv2.inRange(hsv_roi10, lowergreen, uppergreen)
-        contours10, hierarchy10 = cv2.findContours(roi_range10.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # hsv_roi7 = cv2.cvtColor(roi7, cv2.COLOR_BGR2HSV)
+        # roi_range7 = cv2.inRange(hsv_roi7, lowergreen, uppergreen)
+        # contours7, hierarchy7 = cv2.findContours(roi_range7.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #
+        # hsv_roi8 = cv2.cvtColor(roi8, cv2.COLOR_BGR2HSV)
+        # roi_range8 = cv2.inRange(hsv_roi8, lowergreen, uppergreen)
+        # contours8, hierarchy8 = cv2.findContours(roi_range8.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #
+        # hsv_roi9 = cv2.cvtColor(roi9, cv2.COLOR_BGR2HSV)
+        # roi_range9 = cv2.inRange(hsv_roi9, lowergreen, uppergreen)
+        # contours9, hierarchy9 = cv2.findContours(roi_range9.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #
+        # hsv_roi10 = cv2.cvtColor(roi10, cv2.COLOR_BGR2HSV)
+        # roi_range10 = cv2.inRange(hsv_roi10, lowergreen, uppergreen)
+        # contours10, hierarchy10 = cv2.findContours(roi_range10.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         predict1_text = "Solving Linear Equation: "
         predict2_text = "Enter number and press to 's' to save: "
@@ -252,31 +254,31 @@ def calci_main():
             digits.append('**')
             counter += 1
 
-        # detecting dot in root  rectangle
-        if len(contours7) > 0:
-            drawing_started = True
-            print("root")
-
-        # detecting dot in linear  rectangle
-        if len(contours8) > 0:
-            drawing_started = True
-            # print("linear")
-
-            lq.lineq()
-
-        # detecting dot in quadratic rectangle
-        if len(contours9) > 0:
-            drawing_started = True
-            # print("quadratic")
-
-            qd.quadr()
-
-        # detecting dot in trignometric rectangle
-        if len(contours10) > 0:
-            drawing_started = True
-            # print("quadratic")
-
-            tr.trigno()
+        # # detecting dot in root  rectangle
+        # if len(contours7) > 0:
+        #     drawing_started = True
+        #     print("root")
+        #
+        # # detecting dot in linear  rectangle
+        # if len(contours8) > 0:
+        #     drawing_started = True
+        #     # print("linear")
+        #
+        #     lq.lineq()
+        #
+        # # detecting dot in quadratic rectangle
+        # if len(contours9) > 0:
+        #     drawing_started = True
+        #     # print("quadratic")
+        #
+        #     qd.quadr()
+        #
+        # # detecting dot in trignometric rectangle
+        # if len(contours10) > 0:
+        #     drawing_started = True
+        #     # print("quadratic")
+        #
+        #     tr.trigno()
 
         # the board is resized for the prediction
         input = cv2.resize(board, (28, 28))
@@ -318,16 +320,17 @@ def calci_main():
             digits.append(prediction2)
             str1 = ''.join(str(e) for e in digits)
             predict3_text += str1
-            counter2 = 1
+            counter_eq = 1
 
-            if counter2 is 1:
-                printeq(frame, predict3_text)
-                counter2 = 1
+            # if counter2 is 1:
+            #     printeq(frame, predict3_text)
+            #     counter2 = 1
 
-                # cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            # cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
             if counter is 1:
                 counter = 0
+                printeq(frame, predict3_text)
 
             # printeq(frame, predict3_text)
 
@@ -349,13 +352,25 @@ def calci_main():
                 ans = eval(equation)
                 predict4_text_ans = "" + predict4_text + str(ans)
                 counter3 = 1
+            counter_eq = 0
 
         if counter3 is 1:
             printans(frame, predict4_text_ans)
             counter3 = 1
 
+        # if counter_akks is 1:
+        #     printans(frame, predict3_text)
+        #     counter_akks = 1
+
+        if counter_eq is 1:
+            printeq(frame, predict3_text)
+            counter_eq = 1
+            counter_akks = 1
+
         # cv2.imshow('input', input)
         cv2.imshow('frame', frame)
+        cv2.moveWindow("frame", 100, 20)
+
         # cv2.imshow('board', board)
 
     cap.release()

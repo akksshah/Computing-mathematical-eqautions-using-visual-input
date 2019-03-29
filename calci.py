@@ -41,14 +41,14 @@ while cap.isOpened():
     # flipping the frame
     frame = cv2.flip(frame, 1)
     frame = cv2.resize(frame, (int(width), int(height)))
-    draw_rectangle_at_coordinates(100, 100, 500, 300)
-    draw_rectangle_at_coordinates(600, 100, 1000, 300)
-    draw_rectangle_at_coordinates(100, 400, 500, 600)
-    draw_rectangle_at_coordinates(600, 400, 1000, 600)
-    roi_1 = get_roi(frame, 100, 100, 500, 300)
-    roi_2 = get_roi(frame, 600, 100, 1000, 300)
-    roi_3 = get_roi(frame, 100, 400, 500, 600)
-    roi_4 = get_roi(frame, 600, 400, 1000, 600)
+    draw_rectangle_at_coordinates(200, 100, 600, 300)
+    draw_rectangle_at_coordinates(700, 100, 1100, 300)
+    draw_rectangle_at_coordinates(200, 400, 600, 600)
+    draw_rectangle_at_coordinates(700, 400, 1100, 600)
+    roi_1 = get_roi(frame, 200, 100, 600, 300)
+    roi_2 = get_roi(frame, 700, 100, 1100, 300)
+    roi_3 = get_roi(frame, 200, 400, 600, 600)
+    roi_4 = get_roi(frame, 700, 400, 1100, 600)
     hsv_roi_1 = get_hsv_roi(roi_1)
     hsv_roi_2 = get_hsv_roi(roi_2)
     hsv_roi_3 = get_hsv_roi(roi_3)
@@ -61,6 +61,11 @@ while cap.isOpened():
     contours_2, hierarchy_2 = get_contours_and_heirarchy(roi_range_2.copy())
     contours_3, hierarchy_3 = get_contours_and_heirarchy(roi_range_3.copy())
     contours_4, hierarchy_4 = get_contours_and_heirarchy(roi_range_4.copy())
+
+    cv2.putText(frame, "Calculator", (310, 200), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "Quadratic Equation", (250, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "Linear Equation", (780, 200), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "Trignometric Equation", (720, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     if len(contours_1) > 0:
         drawing_started = True
@@ -78,7 +83,9 @@ while cap.isOpened():
         drawing_started = True
         tr.trigno()
     # Display the resulting frame
+
     cv2.imshow('frame', frame)
+    cv2.moveWindow("frame", 100,20)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
