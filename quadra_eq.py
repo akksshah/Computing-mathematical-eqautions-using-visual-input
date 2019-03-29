@@ -182,9 +182,9 @@ def quadr():
             ans_print(frame, x)
             counter1 = 1
 
-        cv2.imshow('input', input)
+        # cv2.imshow('input', input)
         cv2.imshow('frame', frame)
-        cv2.imshow('board', board)
+        # cv2.imshow('board', board)
 
     cap.release()
     cv2.destroyAllWindows()

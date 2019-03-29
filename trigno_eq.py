@@ -193,9 +193,6 @@ def trigno():
 
 
 
-        cv2.imshow('input', input)
-        cv2.imshow('frame', frame)
-        cv2.imshow('board', board)
         k = cv2.waitKey(1) & 0xFF
         if k == ord('q'):
             break
@@ -216,8 +213,10 @@ def trigno():
             ang= int(multi)*((math.pi)/180)
             angle=[]
             multi=""
-            
-        
-        
+
+        # cv2.imshow('input', input)
+        cv2.imshow('frame', frame)
+        # cv2.imshow('board', board)
+
     cap.release()
     cv2.destroyAllWindows()
