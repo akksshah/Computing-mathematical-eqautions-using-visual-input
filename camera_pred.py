@@ -8,19 +8,21 @@ import numpy as np
 import digit_recognizer as dr
 import linear_eq as lq
 import quadra_eq as qd
-import trigno_eq as tr
+import trigno_eq_akks as tr
+
 
 def printeq(frame, text):
     cv2.putText(frame, text, (350, 340), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
+
 def printans(frame, text):
-    #print("Hello :" + hello)
+    # print("Hello :" + hello)
     cv2.putText(frame, text, (350, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
 
-digits=[]
-counter=0
-ans=0
+digits = []
+counter = 0
+ans = 0
 counter2 = 0
 counter3 = 0
 
@@ -49,13 +51,13 @@ while cap.isOpened():
     frame = cv2.flip(frame, 1)
     # applying gaussian blur
     frame = cv2.GaussianBlur(frame, (5, 5), 0)
-    
+
     # drawing the rectangle for the board
-    frame = cv2.resize(frame, (1280,720))
+    frame = cv2.resize(frame, (1280, 720))
     # box area to detect digits
     cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
     roi = frame[50:250, 550:750, :]
-    
+
     # rectangle frame for + operator
     cv2.rectangle(frame, (1050, 50), (1175, 175), (100, 100, 255), 2)
     roi2 = frame[50:175, 1050:1175, :]
@@ -104,13 +106,13 @@ while cap.isOpened():
     roi9 = frame[515:640, 150:275, :]
     cv2.putText(frame, "Quadratic", (150, 555), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "Equation", (160, 600), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-    
+
     # rectangle frame for trignometric equation
     cv2.rectangle(frame, (325, 515), (450, 640), (100, 100, 255), 2)
     roi10 = frame[515:640, 325:450, :]
     cv2.putText(frame, "Trignometric", (325, 555), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "Equation", (350, 600), cv2.FONT_HERSHEY_DUPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
-    
+
     # cv2.rectangle(frame, (500, 600), (400, 600), (100, 100, 255), 2)
 
     # rectangle frame for ^ operator
@@ -119,7 +121,7 @@ while cap.isOpened():
 
     # plus sign
     #
-    
+
     hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
     # detecting colours in the range
     roi_range = cv2.inRange(hsv_roi, lowergreen, uppergreen)
@@ -157,11 +159,11 @@ while cap.isOpened():
     hsv_roi9 = cv2.cvtColor(roi9, cv2.COLOR_BGR2HSV)
     roi_range9 = cv2.inRange(hsv_roi9, lowergreen, uppergreen)
     contours9, hierarchy9 = cv2.findContours(roi_range9.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     hsv_roi10 = cv2.cvtColor(roi10, cv2.COLOR_BGR2HSV)
     roi_range10 = cv2.inRange(hsv_roi10, lowergreen, uppergreen)
     contours10, hierarchy10 = cv2.findContours(roi_range10.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
+
     predict1_text = "Solving Linear Equation: "
     predict2_text = "Enter number and press to 's' to save: "
 
@@ -275,7 +277,7 @@ while cap.isOpened():
         # print("quadratic")
 
         tr.trigno()
-    
+
     # the board is resized for the prediction
     input = cv2.resize(board, (28, 28))
     # applying morphological transformation on the drawn digit
@@ -320,21 +322,21 @@ while cap.isOpened():
 
         if counter2 is 1:
             printeq(frame, predict3_text)
-            counter2 = 1    
+            counter2 = 1
 
-
-        # cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+            # cv2.putText(frame, predict3_text, (350, 300), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
         if counter is 1:
             counter = 0
 
         # printeq(frame, predict3_text)
-        
+
 
     elif k == ord('e'):
         l = len(digits)
-        if  digits[0] is '*' or digits[0] is'/':
-            cv2.putText(frame, "Error in equation", (350, 340), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        if digits[0] is '*' or digits[0] is '/':
+            cv2.putText(frame, "Error in equation", (350, 340), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2,
+                        cv2.LINE_AA)
             print("Error in equation")
             digits = []
         else:
@@ -355,7 +357,6 @@ while cap.isOpened():
     cv2.imshow('input', input)
     cv2.imshow('frame', frame)
     cv2.imshow('board', board)
-
 
 cap.release()
 cv2.destroyAllWindows()

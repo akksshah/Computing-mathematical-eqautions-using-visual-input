@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
-
+import quadra_eq as qd
+import linear_eq as lq
+import trigno_eq as tr
+import camera_pred as cal
 cap = cv2.VideoCapture(0)
 
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -9,6 +12,7 @@ height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 lowergreen = np.array([50, 100, 50])
 uppergreen = np.array([90, 255, 255])
 
+drawing_started = False
 
 def draw_rectangle_at_coordinates(x1, y1, x2, y2):
     cv2.rectangle(frame, (x1, y1), (x2, y2), (100, 100, 255), 2)
@@ -24,7 +28,13 @@ def get_hsv_roi(roi):
     return hsv_roi
 
 
-def get_contours_and_heirarchy()
+def get_roi_range(hsv_roi):
+    roi_range = cv2.inRange(hsv_roi, lowergreen, uppergreen)
+    return roi_range
+
+def get_contours_and_heirarchy(roi):
+    contours, hierarchy = cv2.findContours(roi, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    return contours, hierarchy
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -43,10 +53,30 @@ while cap.isOpened():
     hsv_roi_2 = get_hsv_roi(roi_2)
     hsv_roi_3 = get_hsv_roi(roi_3)
     hsv_roi_4 = get_hsv_roi(roi_4)
-    contours_1, hierarchy_1 = get_contours_and_heirarchy(roi_1_range.copy())
-    contours_1, hierarchy_2 = get_contours_and_heirarchy(roi_2)
-    contours_1, hierarchy_3 = get_contours_and_heirarchy(roi_3)
-    contours_1, hierarchy_4 = get_contours_and_heirarchy(roi_4)
+    roi_range_1 = get_roi(hsv_roi_1)
+    roi_range_2 = get_roi(hsv_roi_2)
+    roi_range_3 = get_roi(hsv_roi_3)
+    roi_range_4 = get_roi(hsv_roi_4)
+    contours_1, hierarchy_1 = get_contours_and_heirarchy(roi_range_1.copy())
+    contours_2, hierarchy_2 = get_contours_and_heirarchy(roi_range_2.copy())
+    contours_3, hierarchy_3 = get_contours_and_heirarchy(roi_range_3.copy())
+    contours_4, hierarchy_4 = get_contours_and_heirarchy(roi_range_4.copy())
+
+    if len(contours_1) > 0:
+        drawing_started = True
+        cal.calci_main()
+
+    if len(contours_2) > 0:
+        drawing_started = True
+        lq.lineq()
+
+    if len(contours_3) > 0:
+        drawing_started = True
+        qd.quadr()
+
+    if len(contours_4) > 0:
+        drawing_started = True
+        tr.trigno()
     # Display the resulting frame
     cv2.imshow('frame', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
