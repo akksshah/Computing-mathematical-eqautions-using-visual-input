@@ -7,22 +7,28 @@ import numpy as np
 
 import digit_recognizer as dr
 
+def ans_print(frame, x):
+    cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
 def quadr():
     dp = "%.2f"
     number = []
+    coeff=[]
+    j=0
+    multi =""
     counter = 0
-    def quadratic():
-        discRoot = math.sqrt((b * b) - 4 * a * c)
-        root1 = (-b + discRoot) / (2 * a)
-        root2 = (-b - discRoot) / (2 * a)
-        ans = dp % root1
-        ans2 = dp % root2
-        x = "The roots are: "
-        print(ans + " " + ans2)
-        x=x+str(ans)+" "+str(ans2)
-        cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        # cv2.putText(frame, y, (5, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    counter1 = 0
+    # def quadratic():
+    #     discRoot = math.sqrt((b * b) - 4 * a * c)
+    #     root1 = (-b + discRoot) / (2 * a)
+    #     root2 = (-b - discRoot) / (2 * a)
+    #     ans = dp % root1
+    #     ans2 = dp % root2
+    #     x = "The roots are: "
+    #     print(ans + " " + ans2)
+    #     x=x+str(ans)+" "+str(ans2)
+    #     cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    #     # cv2.putText(frame, y, (5, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cap = cv2.VideoCapture(0)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -41,6 +47,7 @@ def quadr():
         # applying gaussian blur
         frame = cv2.GaussianBlur(frame, (5, 5), 0)
         # drawing the rectangle for the board
+        frame = cv2.resize(frame, (1280,720))
 
         # box area to detect digits
         cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
@@ -64,6 +71,7 @@ def quadr():
         # the text to be displayed on the screen
         predict1_text = "Solving Quadratic Equation: "
         predict2_text = "Enter number and press to 's' to save: "
+        
         numbers = []
         # flags to check when drawing started and when stopped
         drawing_started = False
@@ -113,7 +121,7 @@ def quadr():
             #LRmodel.predict(LR_input, dr.LR_params.item().get('weights'), dr.LR_params.item().get('base')))
             prediction2 = np.argmax(dr.model_conv.predict(test_x))
 
-            numbers.append(prediction2)
+            #numbers.append(prediction2)
             predict2_text += str(prediction2)
         # displaying the text on the screen
         cv2.putText(frame, predict1_text, (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
@@ -130,22 +138,49 @@ def quadr():
             p = not p
         elif k == ord('s'):
             if counter is 1:
-                a=str(prediction2)
-                b=int("-"+ a)
-                number.append(b)
+                x=str(prediction2)
+                y=int("-"+ x)
+                number.append(y)
                 counter = 0
             else:
                 number.append(prediction2)
+            # multi =""
+
+            
+        elif k == ord('m'):
+            print(multi)
+            l=len(number)
+            for i in range (0,l):
+                multi+= str(number[i])
+            print(multi)
+            coeff.append(int(multi))
+            # j=j+1
+            number = []
+            multi = ""
+            counter=0
         elif k == ord('e'):
-            a = number[0]
-            b = number[1]
-            c = number[2]
-            quadratic()
+            a= coeff[0]
+            b= coeff[1]
+            c= coeff[2]
 
             # a = 1
-            # b = 5
-            # c = 6
-            quadratic()
+            # b = -4
+            # c = 4
+            print(a,b,c)
+            # quadratic()
+            discRoot = math.sqrt((b * b) - 4 * a * c)
+            root1 = (-b + discRoot) / (2 * a)
+            root2 = (-b - discRoot) / (2 * a)
+            ans = dp % root1
+            ans2 = dp % root2
+            x = "The roots are: "
+            print(ans + " " + ans2)
+            x = x + str(ans) + " " + str(ans2)
+            counter1 = 1
+
+        if counter1 is 1:
+            ans_print(frame, x)
+            counter1 = 1
 
         cv2.imshow('input', input)
         cv2.imshow('frame', frame)

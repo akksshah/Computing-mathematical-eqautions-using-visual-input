@@ -11,6 +11,8 @@ import digit_recognizer as dr
 
 def trigno():
     counter=0
+    angle=[]
+    multi=""
     cap = cv2.VideoCapture(0)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
@@ -132,16 +134,19 @@ def trigno():
         # detecting dot in sin rectangle        
         if len(contours2) > 0 and counter is 0:
             drawing_started = True
+            print(math.sin(ang))
             print("sin")
 
         # detecting dot in cos rectangle
         if len(contours3) > 0 and counter is 0:
             drawing_started = True
+            print(math.cos(ang))
             print("cos")
 
         # detecting dot in tan rectangle
         if len(contours4) > 0 and counter is 0:
             drawing_started = True
+            print(math.tan(ang))
             print("tan")
             
         # detecting dot in cosec rectangle
@@ -179,7 +184,7 @@ def trigno():
             test_x = input.reshape((1, 28, 28, 1))
             prediction2 = np.argmax(dr.model_conv.predict(test_x))
 
-            numbers.append(prediction2)
+            #angle.append(prediction2)
             predict2_text += str(prediction2)
         
         # displaying the text on the screen
@@ -201,7 +206,17 @@ def trigno():
         elif k == ord('p'):
             p = not p
         elif k == ord('s'):
-            digits.append(prediction2)
+            angle.append(prediction2)
+        elif k == ord('m'):
+            print(multi)
+            l=len(angle)
+            for i in range (0,l):
+                multi+= str(angle[i])
+            print(multi)
+            ang= int(multi)*((math.pi)/180)
+            angle=[]
+            multi=""
+            
         
         
     cap.release()

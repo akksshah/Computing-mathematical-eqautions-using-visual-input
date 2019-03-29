@@ -6,27 +6,21 @@ import cv2
 import numpy as np
 
 import digit_recognizer as dr
+import time
+def ans_print(frame, x, y):
+    cv2.putText(frame, y, (5, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
 
 def lineq():
     number = []
+    counter1 = 0
+    coeff=[]
+    multi=""
     counter = 0
-    def linearequ():
+    # def linearequ(frame, counter):
 
-        x = "Value of x = "
-        y = "Value of y = "
-        equ1 = np.array([[x1, y1], [x2, y2]])
-        equ2 = np.array([c1, c2])
 
-        ans=np.linalg.solve(equ1, equ2)
-
-        print(ans.item(0))
-        print(ans.item(1))
-        print(ans)
-        x += str(ans.item(0))
-        y += str(ans.item(1))
-        cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, y, (5, 500), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
     cap = cv2.VideoCapture(0)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -45,6 +39,7 @@ def lineq():
         # applying gaussian blur
         frame = cv2.GaussianBlur(frame, (5, 5), 0)
         # drawing the rectangle for the board
+        frame = cv2.resize(frame, (1280,720))
 
         # box area to detect digits
         cv2.rectangle(frame, (550, 50), (750, 250), (100, 100, 255), 2)
@@ -118,15 +113,12 @@ def lineq():
             #LRmodel.predict(LR_input, dr.LR_params.item().get('weights'), dr.LR_params.item().get('base')))
             prediction2 = np.argmax(dr.model_conv.predict(test_x))
 
-            numbers.append(prediction2)
+            #numbers.append(prediction2)
             predict2_text += str(prediction2)
         # displaying the text on the screen
         cv2.putText(frame, predict1_text, (5, 380), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         cv2.putText(frame, predict2_text, (5, 420), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
-        cv2.imshow('input', input)
-        cv2.imshow('frame', frame)
-        cv2.imshow('board', board)
         k = cv2.waitKey(1) & 0xFF
         if k == ord('q'):
             break
@@ -144,13 +136,30 @@ def lineq():
                 counter = 0
             else:
                 number.append(prediction2)
+        elif k == ord('m'):
+            print(multi)
+            l=len(number)
+            for i in range (0,l):
+                multi+= str(number[i])
+            print(multi)
+            coeff.append(int(multi))
+            #j=j+1
+            number=[]
+            multi=""
+            counter=0        
         elif k == ord('e'):
-            x1 = number[0]
-            y1 = number[1]
-            c1 = number[2]
-            x2 = number[3]
-            y2 = number[4]
-            c2 = number[5]
+            x1 = coeff[0]
+            y1 = coeff[1]
+            c1 = coeff[2]
+            x2 = coeff[3]
+            y2 = coeff[4]
+            c2 = coeff[5]
+            # x1 = 3
+            # y1 = 4
+            # c1 = 7
+            # x2 = 4
+            # y2 = 3
+            # c2 = 7
 
             print(x1)
             print(y1)
@@ -159,14 +168,31 @@ def lineq():
             print(y2)
             print(c2)
 
-            # x1 = 3
-            # y1 = 4
-            # c1 = 7
-            # x2 = 4
-            # y2 = 3
-            # c2 = 7
+            
 
-            linearequ()
+            # linearequ(frame)
+            x = "Value of x = "
+            y = "Value of y = "
+            equ1 = np.array([[x1, y1], [x2, y2]])
+            equ2 = np.array([c1, c2])
+
+            ans = np.linalg.solve(equ1, equ2)
+
+            print(ans.item(0))
+            print(ans.item(1))
+            print(ans)
+            x += str(ans.item(0))
+            y += str(ans.item(1))
+            counter1 = 1
+
+
+            # time.sleep(10)
+        if counter1 is 1:
+            ans_print(frame, x, y)
+            counter1 = 1
+        cv2.imshow('input', input)
+        cv2.imshow('frame', frame)
+        cv2.imshow('board', board)
 
     cap.release()
     cv2.destroyAllWindows()
