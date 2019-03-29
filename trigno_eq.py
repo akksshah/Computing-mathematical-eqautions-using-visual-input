@@ -12,6 +12,7 @@ import digit_recognizer as dr
 def trigno():
     counter=0
     angle=[]
+    ang = 0
     multi=""
     cap = cv2.VideoCapture(0)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)

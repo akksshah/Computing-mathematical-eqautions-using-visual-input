@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import quadra_eq as qd
 import linear_eq as lq
-import trigno_eq as tr
+import trigno_eq_akks as tr
 import camera_pred as cal
 cap = cv2.VideoCapture(0)
 
