@@ -57,12 +57,12 @@ if weights_files == correct_files:
     print('No. of epochs used = ', CNN_acc.item().get('epoch'))
 else:
     # load json and create model
-    json_file = open('model_pk.json', 'r')
+    json_file = open('model1.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model_conv = model_from_json(loaded_model_json)
     # load weights into new model
-    model_conv.load_weights("model_pk.h5")
+    model_conv.load_weights("model1.h5")
     print("Loaded model from disk")
 
 

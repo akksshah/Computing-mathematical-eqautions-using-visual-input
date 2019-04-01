@@ -7,11 +7,14 @@ import numpy as np
 
 import digit_recognizer as dr
 
-
+def print_ans(frame, counter_aakash, text):
+    print(text+"ans")
+    cv2.putText(frame, text, (5, 645), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
 def trigno():
     counter=0
     angle=[]
+    counter_aakash = 0
     ang = 0
     multi=""
     cap = cv2.VideoCapture(0)
@@ -31,6 +34,7 @@ def trigno():
     equ = ""
 
     while cap.isOpened():
+        counter_aakash = 0
         ret, frame = cap.read()
         # flipping the frame
         frame = cv2.flip(frame, 1)
@@ -134,18 +138,24 @@ def trigno():
         
         # detecting dot in sin rectangle        
         if len(contours2) > 0 and counter is 0:
+            counter_aakash = 1
+            print_ans(frame, counter_aakash, str(math.sin(ang)))
             drawing_started = True
             print(math.sin(ang))
             print("sin")
 
         # detecting dot in cos rectangle
         if len(contours3) > 0 and counter is 0:
+            counter_aakash = 1
+            print_ans(frame, counter_aakash, str(math.cos(ang)))
             drawing_started = True
             print(math.cos(ang))
             print("cos")
 
         # detecting dot in tan rectangle
         if len(contours4) > 0 and counter is 0:
+            counter_aakash = 1
+            print_ans(frame, counter_aakash, str(math.tan(ang)))
             drawing_started = True
             print(math.tan(ang))
             print("tan")
@@ -214,6 +224,8 @@ def trigno():
             ang= int(multi)*((math.pi)/180)
             angle=[]
             multi=""
+        elif k == ord('v'):
+            counter_aakash = 0
 
         # cv2.imshow('input', input)
         cv2.imshow('frame', frame)

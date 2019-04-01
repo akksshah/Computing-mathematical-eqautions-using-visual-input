@@ -367,11 +367,11 @@ def calci_main():
             counter_eq = 1
             counter_akks = 1
 
-        # cv2.imshow('input', input)
+        cv2.imshow('input', input)
         cv2.imshow('frame', frame)
         cv2.moveWindow("frame", 100, 20)
 
-        # cv2.imshow('board', board)
+        cv2.imshow('board', board)
 
     cap.release()
     cv2.destroyAllWindows()

@@ -16,7 +16,7 @@ img_rows, img_cols = 28, 28
 seed = 7
 np.random.seed(seed)
 
-def model_shrey():
+def model_2():
 
     batch_size = 128
     num_classes = 10
@@ -75,7 +75,7 @@ def model_shrey():
     print('Test accuracy:', score[1])
     return model, score[1]
 
-def model_akks(train_x, train_y, test_x, test_y, epoch):
+def model_1(train_x, train_y, test_x, test_y, epoch):
     '''
 
     :param train_x: train features
