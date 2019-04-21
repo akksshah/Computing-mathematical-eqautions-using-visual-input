@@ -3,8 +3,10 @@ import numpy as np
 
 def softmax(z):
     '''
+
     :param z:
     :return:
+
     '''
     z -= np.max(z, axis=1).reshape(-1, 1)
     s = (np.exp(z) / np.sum(np.exp(z), axis=1).reshape(-1, 1))
@@ -13,9 +15,11 @@ def softmax(z):
 
 def initialize(X, y):
     '''
+
     :param X: features
     :param y: labels
     :return: weights, base
+
     '''
     weights = np.zeros((X.shape[1], y.shape[1]))
     base = np.zeros((1, y.shape[1]))
@@ -24,11 +28,13 @@ def initialize(X, y):
 
 def propagate(weights, base, X, y):
     '''
+
     :param weights:
     :param base:
     :param X: features
     :param y: labels
     :return: cost, gradient_weights, gradient_base
+
     '''
     m = X.shape[0]
     h = softmax(np.dot(X, weights) + base)
@@ -40,10 +46,12 @@ def propagate(weights, base, X, y):
 
 def predict(X, weights, base):
     '''
+
     :param X: features
     :param weights:
     :param base:
     :return: predicted labels
+
     '''
     h = softmax(np.dot(X, weights) + base)
     return h
@@ -51,11 +59,13 @@ def predict(X, weights, base):
 
 def evaluate(X, y, weights, base):
     '''
+
     :param X: features
     :param y: labels
     :param weights:
     :param base:
     :return: accuracy
+
     '''
     h = softmax(np.dot(X, weights) + base)
     h_argmax = np.argmax(h, axis=1)
@@ -66,6 +76,7 @@ def evaluate(X, y, weights, base):
 
 def model(train_x, train_y, test_x, test_y, iters, alpha, print_cost=True):
     '''
+
     :param train_x: training features
     :param train_y: training labels
     :param test_x: test features
@@ -74,6 +85,7 @@ def model(train_x, train_y, test_x, test_y, iters, alpha, print_cost=True):
     :param alpha: learning rate
     :param print_cost: printing the cost
     :return: weights, base
+
     '''
     # reshaping (28, 28) data int 784
     train_x = np.reshape(train_x, (-1, 784))

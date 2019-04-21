@@ -1,11 +1,12 @@
 import math
-import time
 from collections import deque
 
 import cv2
 import numpy as np
 
 import digit_recognizer as dr
+
+
 # import linear_eq as lq
 # import quadra_eq as qd
 # import trigno_eq_akks as tr
@@ -205,26 +206,7 @@ def calci_main():
             drawing_started = True
             digits.append('+')
             counter += 1
-            # print("+")
-            # print(type(contours2))
-            # getting max contours from the contours
-            # max_contours2 = max(contours2, key2=cv2.contourArea)
-            # M = cv2.moments(max_contours2)
-            # to avoid divided by zero error
-            # try:
-            # center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
-            # except:
-            # continue
-            # center obtained is appended to the deque
-            # center_points2.appendleft(center)
-            #    else:
-            #        drawing_stopped2 = False
-            #    for i in range(1, len(center_points2)):
-            #        if math.sqrt((center_points2[i-1][0] - center_points2[i][0])**2 +
-            #                     (center_points2[i-1][1] - center_points2[i][1])**2) < 50:
-            #            cv2.line(roi2, center_points2[i-1], center_points2[i], (200, 200, 200), 5, cv2.LINE_AA)
-            #            cv2.line(board2, (center_points2[i-1][0]+15, center_points2[i-1][1]+15),
-            #                     (center_points2[i][0]+15, center_points2[i][1]+15), 255, 7, cv2.LINE_AA)
+
 
         # detecting dot in - rectangle
         if len(contours3) > 0 and counter is 0:

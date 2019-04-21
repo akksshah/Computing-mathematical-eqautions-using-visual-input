@@ -1,15 +1,15 @@
 from __future__ import print_function
+
+import keras
+import numpy as np
+from keras import backend as K
+from keras.datasets import mnist
+from keras.layers import Conv2D, MaxPooling2D
+from keras.layers import Dense, Dropout, Flatten
+from keras.models import Sequential
+from tensorflow.python import keras
 from tensorflow.python.keras.layers import Dense, Flatten, Conv2D
 from tensorflow.python.keras.models import Sequential
-from tensorflow.python import keras
-import numpy as np
-import keras
-from keras.datasets import mnist
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
-from keras import backend as K
-from keras.utils import plot_model
 
 num_classes = 10
 img_rows, img_cols = 28, 28
@@ -50,6 +50,7 @@ def model_2():
     y_test = keras.utils.to_categorical(y_test, num_classes)
 
     model = Sequential()
+
     model.add(Conv2D(32, kernel_size=(3, 3),
                      activation='relu',
                      input_shape=input_shape))
@@ -84,6 +85,7 @@ def model_1(train_x, train_y, test_x, test_y, epoch):
     :param test_y: test labels
     :param epoch: no. of epochs
     :return:
+
     '''
     # conv_model = Sequential()
     # # first layer with input shape (img_rows, img_cols, 1) and 12 filters

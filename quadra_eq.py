@@ -7,6 +7,7 @@ import numpy as np
 
 import digit_recognizer as dr
 
+
 def ans_print(frame, x):
     cv2.putText(frame, x, (5, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
@@ -164,7 +165,7 @@ def quadr():
             c= coeff[2]
 
             # a = 1
-            # b = -4
+            # b = 4
             # c = 4
             print(a,b,c)
             # quadratic()

@@ -1,10 +1,8 @@
 import os
 
 import numpy as np
-from tensorflow.python import keras
 from keras.models import model_from_json
-import conv_network
-import input_data
+from tensorflow.python import keras
 
 num_classes = 10
 img_rows, img_cols = 28, 28
@@ -61,6 +59,7 @@ else:
     loaded_model_json = json_file.read()
     json_file.close()
     model_conv = model_from_json(loaded_model_json)
+    # plot_model(model_conv, to_file='modelakks.png')
     # load weights into new model
     model_conv.load_weights("model1.h5")
     print("Loaded model from disk")
