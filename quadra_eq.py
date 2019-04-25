@@ -14,9 +14,9 @@ def ans_print(frame, x):
 def quadr():
     dp = "%.2f"
     number = []
-    coeff=[]
-    j=0
-    multi =""
+    coeff = []
+    j = 0
+    multi = ""
     counter = 0
     counter1 = 0
     # def quadratic():
@@ -167,17 +167,26 @@ def quadr():
             # a = 1
             # b = 4
             # c = 4
-            print(a,b,c)
+            print(a, b, c)
             # quadratic()
-            discRoot = math.sqrt((b * b) - 4 * a * c)
-            root1 = (-b + discRoot) / (2 * a)
-            root2 = (-b - discRoot) / (2 * a)
-            ans = dp % root1
-            ans2 = dp % root2
-            x = "The roots are: "
-            print(ans + " " + ans2)
-            x = x + str(ans) + " " + str(ans2)
-            counter1 = 1
+            if (b * b)- 4 * a * c < 0:
+                # counter = 1
+                # x = "Imaginary roots"
+                # counter = 1
+                # ans_print(frame,x)
+                for i in range(5):
+                    print("Imaginary roots")
+                coeff = []
+            else:
+                discRoot = math.sqrt((b * b) - 4 * a * c)
+                root1 = (-b + discRoot) / (2 * a)
+                root2 = (-b - discRoot) / (2 * a)
+                ans = dp % root1
+                ans2 = dp % root2
+                x = "The roots are: "
+                print(ans + " and " + ans2)
+                x = x + str(ans) + " " + str(ans2)
+                counter1 = 1
 
         if counter1 is 1:
             ans_print(frame, x)

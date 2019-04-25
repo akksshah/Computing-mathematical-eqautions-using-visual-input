@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb9f498d-257e-4dfd-b23e-0e56a3d78bfb" name="Default Changelist" comment="lint errors removal">
+    <list default="true" id="fb9f498d-257e-4dfd-b23e-0e56a3d78bfb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/aakash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/aakash.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LRmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/LRmodel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/camera_pred.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera_pred.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conv_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/conv_network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digit_recognizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/digit_recognizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quadra_eq.py" beforeDir="false" afterPath="$PROJECT_DIR$/quadra_eq.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trigno_eq_akks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3390">
+            <state relative-caret-position="1547">
               <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -29,13 +27,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/camera_pred.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4260">
-              <caret line="291" column="33" selection-start-line="291" selection-start-column="33" selection-end-line="291" selection-end-column="33" />
+            <state relative-caret-position="578">
+              <caret line="329" column="27" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="27" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Print.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/calci.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-11">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,16 +97,16 @@
         <entry file="file://$PROJECT_DIR$/linear_eq.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quadra_eq.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="154" column="24" lean-forward="true" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
+            <state relative-caret-position="3166">
+              <caret line="187" column="50" selection-start-line="187" selection-start-column="50" selection-end-line="187" selection-end-column="50" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -156,12 +178,12 @@
         <option value="$PROJECT_DIR$/trigno_eq.py" />
         <option value="$PROJECT_DIR$/digit_recognizer.py" />
         <option value="$PROJECT_DIR$/calci.py" />
-        <option value="$PROJECT_DIR$/camera_pred.py" />
         <option value="$PROJECT_DIR$/conv_network.py" />
         <option value="$PROJECT_DIR$/LRmodel.py" />
         <option value="$PROJECT_DIR$/Model Print.py" />
         <option value="$PROJECT_DIR$/trigno_eq_akks.py" />
         <option value="$PROJECT_DIR$/linear_eq.py" />
+        <option value="$PROJECT_DIR$/camera_pred.py" />
         <option value="$PROJECT_DIR$/quadra_eq.py" />
       </list>
     </option>
@@ -175,6 +197,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,7 +214,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,7 +285,8 @@
       <workItem from="1555406475363" duration="9388000" />
       <workItem from="1555490204760" duration="227000" />
       <workItem from="1555749283201" duration="700000" />
-      <workItem from="1555865095860" duration="317000" />
+      <workItem from="1555865095860" duration="694000" />
+      <workItem from="1555866004281" duration="4791000" />
     </task>
     <task id="LOCAL-00001" summary="Model Enhancements">
       <created>1552832334120</created>
@@ -300,11 +323,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553113216569</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="BE PROJ Final Ready">
+      <created>1555865457379</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555865457379</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63487000" />
+    <option name="totallyTimeSpent" value="68655000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -317,14 +347,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21459228" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21745351" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Duplicates" order="1" weight="0.32959327" />
-      <window_info anchor="bottom" id="Terminal" order="2" sideWeight="0.49642345" visible="true" weight="0.19397591" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.49642345" visible="true" weight="0.19397591" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.4985694" weight="0.28313252" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5035765" side_tool="true" weight="0.17951807" />
       <window_info anchor="bottom" id="Python Console" order="5" sideWeight="0.4985207" weight="0.3060241" />
@@ -421,7 +450,8 @@
     <MESSAGE value="Merge" />
     <MESSAGE value="Printing ans done" />
     <MESSAGE value="lint errors removal" />
-    <option name="LAST_COMMIT_MESSAGE" value="lint errors removal" />
+    <MESSAGE value="BE PROJ Final Ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="BE PROJ Final Ready" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -429,12 +459,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/digit_recognizer.py</url>
-          <line>60</line>
+          <line>58</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/digit_recognizer.py</url>
-          <line>71</line>
+          <line>69</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
@@ -473,33 +503,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calci.py">
+    <entry file="file://$USER_HOME$/KiteOnboarding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trigno_eq_akks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3390">
-          <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/camera_pred.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4260">
-          <caret line="291" column="33" selection-start-line="291" selection-start-column="33" selection-end-line="291" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-624">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -537,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/KiteOnboarding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
-          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model Print.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -554,17 +554,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trigno_eq_akks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/linear_eq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calci.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quadra_eq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="154" column="24" lean-forward="true" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
+        <state relative-caret-position="3166">
+          <caret line="187" column="50" selection-start-line="187" selection-start-column="50" selection-end-line="187" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/camera_pred.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="329" column="27" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="27" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
